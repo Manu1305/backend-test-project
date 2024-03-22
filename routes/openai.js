@@ -1,8 +1,8 @@
 const Openai = require('openai')
 const express = require('express');
 const router = express.Router();
-
-
+require("dotenv").config()
+ 
 
 const openai = new Openai({
     apiKey: process.env.OPENAI_KEY
@@ -16,6 +16,7 @@ router.post('/generate-text', async (req, res) => {
         messages: [{ "role": "user", "content": prompt }],
         max_tokens: 100
     })
+    res.send(response)
     console.log(response.choices[0].message)
 })
 module.exports = router;

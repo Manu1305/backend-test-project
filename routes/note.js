@@ -18,7 +18,7 @@ router.post('/notes', async (req, res) => {
     
     if (!req.body.title || !req.body.content) {
         return res.status(400).json({ message: "Title and content are required" });
-    }
+    } 
 
     const note = new Note({
         title: req.body.title,
