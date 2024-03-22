@@ -4,7 +4,8 @@ const express = require('express');
 const router = express.Router();
 const Note = require('../database/models/note');
 
-// GET all notes
+
+//get all notes
 router.get('/notes', async (req, res) => {
     try {
         const notes = await Note.find();
@@ -14,7 +15,7 @@ router.get('/notes', async (req, res) => {
     }
 });
 
-// POST a new note
+// post new notes
 router.post('/notes', async (req, res) => {
     
     if (!req.body.title || !req.body.content) {
@@ -34,12 +35,13 @@ router.post('/notes', async (req, res) => {
     }
 });
 
-// GET a specific note by ID
+//get note by id
 router.get('/notes/:id', getNote, (req, res) => {
     res.json(res.note);
 });
 
-// UPDATE a specific note by ID
+
+//update note by id
 router.put('/notes/:id', getNote, async (req, res) => {
     if (req.body.title != null) {
         res.note.title = req.body.title;
@@ -55,7 +57,8 @@ router.put('/notes/:id', getNote, async (req, res) => {
     }
 });
 
-// DELETE a specific note by ID
+// delete note by id
+
 router.delete('/notes/:id', getNote, async (req, res) => {
     try {
         await res.note.remove();

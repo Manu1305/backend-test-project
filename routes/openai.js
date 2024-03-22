@@ -5,7 +5,7 @@ const router = express.Router();
 
 
 const openai = new Openai({
-    apiKey: process.env.OPENAI_KEY
+    apiKey: "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"
 })
 router.post('/generate-text', async (req, res) => {
 
